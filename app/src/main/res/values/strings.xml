@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">深州环境监控</string>
+    <string name="internet_error">网络错误</string>
+    <string name="waterOutPutType">污水</string>
+    <string name="gasOutPutType">废气</string>
+    <string name="vocOutPutType">VOC</string>
+</resources>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gz.xhb.Activity.OnlineDataActivity">
+
+    <FrameLayout
+        android:id="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.gz.xhb.util.TitleBar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            style="@style/AppTheme.ActionBar"></com.gz.xhb.util.TitleBar>
+
+    </FrameLayout>
+
+    <include
+        layout="@layout/layout_condition"
+        ></include>
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/ll_onlineData_condition"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/toolbar_container"-->
+        <!--android:orientation="vertical"-->
+        <!--android:padding="10dp">-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ll_onlineData_time"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_onlineData_beginTime"-->
+                <!--style="@style/timeSelectStyle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="2018-7-1 10:10" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:text="至" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_onlineData_endTime"-->
+                <!--style="@style/timeSelectStyle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="2018-7-1 10:10" />-->
+
+
+        <!--</LinearLayout>-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/ll_onlineData_otherCondition"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<org.angmarch.views.NiceSpinner-->
+                <!--android:id="@+id/nice_spinner"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_onlineData_search"-->
+                <!--style="@style/ButtonNormalStyle"-->
+                <!--android:layout_width="68dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:text="查询"-->
+                <!--android:textSize="14sp" />-->
+
+        <!--</RelativeLayout>-->
+
+
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/ll_onlineData_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_onlineData_condition"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/data_time"
+            android:layout_height="match_parent"
+            android:background="@color/colorDataOnlineTitle"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:textColor="@color/white"
+            android:text="时间" />
+
+        <vb.shlv.MyHScrollView
+            android:id="@+id/head_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:focusable="false"
+            android:background="@color/colorDataOnlineTitle"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/ll_onlineData_addLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorDataOnlineTitle"
+                android:divider="@drawable/ll_devider"
+                android:focusable="false"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:gravity="center"
+                android:showDividers="middle">
+
+
+            </LinearLayout>
+
+        </vb.shlv.MyHScrollView>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/ll_onlineData_head"
+        android:background="#cccccc" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line"
+        android:headerDividersEnabled="true" />
+
+
+    <ScrollView
+        android:id="@+id/sv_onlineData_charts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_onlineData_charts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+
+    </ScrollView>
+
+    <!--<com.github.mikephil.charting.charts.LineChart-->
+    <!--android:id="@+id/chart_onlineData_chart"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:id="@+id/iv_itemPsList_icon"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:paddingTop="@dimen/activity_top_margin"
+        android:paddingBottom="@dimen/activity_bottom_margin"
+        android:layout_marginLeft="@dimen/activity_left_margin"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:background="@drawable/oval"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/content_height"
+        android:layout_marginLeft="@dimen/activity_left_margin"
+        android:layout_marginTop="@dimen/activity_top_margin"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="@dimen/activity_bottom_margin"
+        android:gravity="left|center_vertical">
+        <TextView
+            android:id="@+id/tv_itemPsList_psName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:ellipsize="end"
+            android:gravity="bottom"
+            android:maxLines="2"
+            android:textSize="16sp"
+            android:textColor="@color/main_text_black" />
+    </RelativeLayout>
+
+</LinearLayout>

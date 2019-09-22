@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data classs="ActivityPsBaseInfoBinding">
+
+        <import type="android.view.View" />
+
+        <variable
+            name="psmPsBaseInfo"
+            type="com.gz.xhb.MVP.Model.Entity.PsBaseInfoData" />
+
+        <!--<import type="com.huaqing.frhb.Util.MyBindingUtil" />-->
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/bindingId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.gz.xhb.util.TitleBar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            style="@style/AppTheme.ActionBar"></com.gz.xhb.util.TitleBar>
+
+        <ScrollView
+            android:id="@+id/sv_psListDetail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingTop="15dp">
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="企业编号：" />
+
+                    <EditText
+                        android:id="@+id/et_login_1"
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.pscode}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="企业名称：" />
+
+                    <EditText
+                        android:id="@+id/et_login_2"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.psname}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="关注度名称：" />
+
+                    <EditText
+                        android:id="@+id/et_login_3"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.attentiondegreecode}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="企业类型名称：" />
+
+                    <EditText
+                        android:id="@+id/et_login_4"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.pstypename}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="企业地址：" />
+
+                    <EditText
+                        android:id="@+id/et_login_5"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.psaddress}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="区划编号：" />
+
+                    <EditText
+                        android:id="@+id/et_login_6"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.regionname}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="组织机构代码：" />
+
+                    <EditText
+                        android:id="@+id/et_login_7"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.orgnizationcode}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="法人代表：" />
+
+                    <EditText
+                        android:id="@+id/et_login_8"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.corporate}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="经度：" />
+
+                    <EditText
+                        android:id="@+id/et_login_9"
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.longitude}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="纬度：" />
+
+                    <EditText
+                        android:id="@+id/et_login_a"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.latitude}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="联系人：" />
+
+                    <EditText
+                        android:id="@+id/et_login_b"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.linkman}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="联系电话：" />
+
+                    <EditText
+                        android:id="@+id/et_login_c"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.mobile}" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">
+
+                    <TextView
+                        style="@style/leftQuestionStyle"
+                        android:text="备注：" />
+
+                    <EditText
+                        android:id="@+id/et_login_d"
+
+                        style="@style/rightAnswerStyle"
+                        android:text="@={psmPsBaseInfo.remarks}" />
+                </LinearLayout>
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="重点级别：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_e"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:text="@={psmPsBaseInfo.keySourceName}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="重点类型：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_f"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:text="@={psmPsBaseInfo.keySourceTypeName}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="是否在园区：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_g"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:isNormal="@={psmPsBaseInfo.isInZone}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="所属园区：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_h"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:text="@={psmPsBaseInfo.zoneName}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="是否有放射源：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_i"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:isNormal="@={psmPsBaseInfo.isRadiationSource}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="是否有应急预案：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_j"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:isNormal="@={psmPsBaseInfo.isContingencyPlan}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="应急预案是否有备案：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_k"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:isNormal="@={psmPsBaseInfo.isPlanRecord}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="规范化排放口个数：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_l"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:text="@={psmPsBaseInfo.normalizeOutputNum}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="是否雨污分离：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_m"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:text="@={psmPsBaseInfo.isRainSeparating}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="环境风险源个数：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_n"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:text="@={psmPsBaseInfo.envRiskNum}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="是否涉重金属：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_o"-->
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:isNormal="@={psmPsBaseInfo.isHeavyMetals}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="是否涉VOC：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_p"-->
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:isNormal="@={psmPsBaseInfo.isOutputVoc}" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout style="@style/leftQuestionRightAnswerLayoutStyle">-->
+
+                <!--<TextView-->
+                <!--style="@style/leftQuestionStyle"-->
+                <!--android:text="是否危废企业：" />-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/et_login_q"-->
+
+                <!--style="@style/rightAnswerStyle"-->
+                <!--android:isNormal="@={psmPsBaseInfo.isHazardousWaste}" />-->
+                <!--</LinearLayout>-->
+
+
+                <!--<ListView-->
+                <!--android:id="@+id/psListDetail_lv"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:visibility="gone"></ListView>-->
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>

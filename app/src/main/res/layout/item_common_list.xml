@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:id="@+id/ll_itemCommonList_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_bottom_margin"
+        android:paddingTop="@dimen/activity_top_margin">
+
+    </LinearLayout>
+
+
+</LinearLayout>

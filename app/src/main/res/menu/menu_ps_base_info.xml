@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_psBaseInfo_portInfo"
+        android:title="排口信息"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_psBaseInfo_equipment"
+        android:icon="@mipmap/ic_launcher"
+        android:title="在线检测仪器"
+        android:visible="false"
+        app:showAsAction="ifRoom"/>
+</menu>

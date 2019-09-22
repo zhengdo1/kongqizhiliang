@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_login"
+    android:orientation="vertical"
+    >
+    <!--<com.gz.xhb.util.TitleBar-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:minHeight="?attr/actionBarSize">-->
+    <!--</com.gz.xhb.util.TitleBar>-->
+    <!--android:background="@mipmap/menu_background1"-->
+
+    <TextView
+        android:id="@+id/tv_main_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="深州环境监控"
+        android:textColor="@color/white"
+        android:textSize="32sp" />
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/MyGridView"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="26dp"
+        android:columnWidth="90dp"
+        android:stretchMode="columnWidth"
+        android:numColumns="3"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="30dp"
+        android:scrollbars="none"
+        android:gravity="center"
+        >
+    </GridView>
+
+</LinearLayout>
