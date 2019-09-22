@@ -7,6 +7,8 @@ import com.gz.xhb.MVP.Model.Entity.User;
  */
 
 public interface LoginView extends com.gz.xhb.MVP.View.BaseView {
+    void setUser(String user);
+    void setPassword(String password);
     String getUser();
     String getPassword();
     void clearUserInfo();

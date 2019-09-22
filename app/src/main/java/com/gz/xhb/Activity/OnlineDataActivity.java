@@ -149,6 +149,9 @@ public class OnlineDataActivity extends XHBBaseActivity implements OnlineDataVie
             case "VOC":
                 outputtype = "vocApp";
                 break;
+            case "AIR":
+                outputtype = "airApp";
+                break;
             default:
                     outputtype = "";
         }

@@ -44,18 +44,6 @@ public class PortListAdatper extends XHBBaseAdapter<PortInfoData> {
             holder.outputtype = (TextView) convertView.findViewById(R.id.layout_itemPortList_outputtype).findViewById(R.id.tv_right_answer);
             holder.outputpointtype = (TextView) convertView.findViewById(R.id.layout_itemPortList_outputpointtype).findViewById(R.id.tv_right_answer);
             holder.ifsintering = (TextView) convertView.findViewById(R.id.layout_itemPortList_ifsintering).findViewById(R.id.tv_right_answer);
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(aClass!=null){
-                        Intent intent= new Intent(context,aClass);
-                    intent.putExtra("outputCode",list.get(position).getOutputcode());
-                    intent.putExtra("typeName", PortListActivity.typeName);
-                    intent.putExtra("outputname", list.get(position).getOutputname());
-                        context.startActivity(intent);
-                    }
-                }
-            });
             convertView.setTag(holder);
         }
         holder=(ViewHolder)convertView.getTag();
@@ -66,6 +54,19 @@ public class PortListAdatper extends XHBBaseAdapter<PortInfoData> {
         holder.outputtype.setText(portInfo.getOutputtype());
         holder.outputpointtype.setText(portInfo.getOutputpointtype());
         holder.ifsintering.setText(portInfo.getIfsintering());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(aClass!=null){
+                    Intent intent= new Intent(context,aClass);
+                    intent.putExtra("outputCode",list.get(position).getOutputcode());
+                    intent.putExtra("typeName", PortListActivity.typeName);
+                    intent.putExtra("outputname", list.get(position).getOutputname());
+                    context.startActivity(intent);
+                }
+            }
+        });
+
         return convertView;
     }
 

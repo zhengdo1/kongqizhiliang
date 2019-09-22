@@ -31,16 +31,19 @@ public class MainMenuActivity extends XHBBaseActivity implements MainMenuView {
     TextView tvMainTitle;
 
     //定义图标数组
-    private int[] imageRes = {R.mipmap.ic_map, R.mipmap.ic_psdetail, R.mipmap.ic_water, R.mipmap.ic_gas,
-            R.mipmap.ic_vocs, R.mipmap.ic_alarm, R.mipmap.ic_warning};
+//    private int[] imageRes = {R.mipmap.ic_map, R.mipmap.ic_psdetail, R.mipmap.ic_water, R.mipmap.ic_gas,
+//            R.mipmap.ic_vocs, R.mipmap.ic_alarm, R.mipmap.ic_warning};
+    private int[] imageRes = {R.mipmap.ic_map, R.mipmap.ic_psdetail,  R.mipmap.ic_gas,
+             R.mipmap.ic_alarm, R.mipmap.ic_warning};
     //定义标题数组
-    private String[] itemName = {"电子地图", "基础信息", "污水数据", "废气数据", "VOCs数据", "报警数据", "预警数据"};
-    private String[] typeName = {"电子地图", "基础信息", "污水", "废气", "VOC", "报警数据", "预警数据"};
+//    private String[] itemName = {"电子地图", "基础信息", "污水数据", "废气数据", "VOCs数据", "报警数据", "预警数据"};
+//    private String[] typeName = {"电子地图", "基础信息", "污水", "废气", "VOC", "报警数据", "预警数据"};
+    private String[] itemName = {"电子地图", "基础信息",  "空气质量",  "报警数据", "预警数据"};
+    private String[] typeName = {"电子地图", "基础信息", "空气质量",  "报警数据", "预警数据"};
+
 //    private int[] toClassType = {-1,0,1,1,1,1,1};
 
     private Class[] classes = {AMapActivity.class
-            , PsListActivity.class
-            , PsListActivity.class
             , PsListActivity.class
             , PsListActivity.class,
             AlarmDataListActivity.class,

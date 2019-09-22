@@ -75,6 +75,9 @@ public class PsListActivity extends BaseListActivity<ListView, PsListAdapter> im
             case "VOC":
                 pstype = "3";
                 break;
+            case "AIR":
+                pstype = "5";
+                break;
         }
         psListPresenter.getList(keyword,pstype);
     }

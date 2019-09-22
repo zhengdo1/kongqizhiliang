@@ -58,6 +58,17 @@ public class LoginActivity extends XHBBaseActivity implements LoginView {
         });
     }
 
+
+    @Override
+    public void setUser(String user) {
+        et_user.setText(user);
+    }
+
+    @Override
+    public void setPassword(String password) {
+        et_password.setText(password);
+    }
+
     @Override
     public String getUser() {
         return et_user.getText().toString().trim();

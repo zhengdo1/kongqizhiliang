@@ -85,8 +85,8 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
 //            aMap.setMyLocationEnabled(true);// 可触发定位并显示当前位置
             //可视化区域，将指定位置指定到屏幕中心位置
             cameraUpdate = CameraUpdateFactory
-                    .newCameraPosition(new CameraPosition(new LatLng(38.0002200000,115.5600100000
-                           ), 10, 0, 30));
+                    .newCameraPosition(new CameraPosition(new LatLng(38.3169,117.867
+                           ), 11, 0, 0));
             aMap.moveCamera(cameraUpdate);
 
 //            geocoderSearch = new GeocodeSearch(this);
@@ -173,7 +173,7 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
             aMap.addMarker(markerOptionlst.get(i));
 
         }
-        aMap.moveCamera(CameraUpdateFactory.zoomTo(10));
+        aMap.moveCamera(CameraUpdateFactory.zoomTo(11));
     }
 
     @Override

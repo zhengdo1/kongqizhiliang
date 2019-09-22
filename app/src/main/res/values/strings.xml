@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">深州环境监控</string>
+    <string name="app_name">沧州中铁装备材料制造有限公司空气质量监测系统</string>
     <string name="internet_error">网络错误</string>
     <string name="waterOutPutType">污水</string>
     <string name="gasOutPutType">废气</string>
