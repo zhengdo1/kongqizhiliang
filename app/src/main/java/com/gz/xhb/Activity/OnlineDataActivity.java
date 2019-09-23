@@ -34,6 +34,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -225,12 +226,17 @@ public class OnlineDataActivity extends XHBBaseActivity implements OnlineDataVie
     @Override
     public void showData(JSONArray jsonArray) {
         List<Map<String, String>> list = JsonUtil.jsonArrayToMapList(jsonArray);
+        List<Map<String, String>> listChart = new ArrayList<>();
+
+        for(int i=list.size()-1;i>=0;i--){
+            listChart.add(list.get(i));
+        }
+
         showFormData(list);
-        showChartData(list);
+        showChartData(listChart);
     }
 
     private void showChartData(List<Map<String, String>> list) {
-
         List<List<Entry>> entriesList = new ArrayList<>();
         List<String> titles = new ArrayList<>();
         List<String> dates = new ArrayList<>();
