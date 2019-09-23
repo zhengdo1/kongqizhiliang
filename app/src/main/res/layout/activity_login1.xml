@@ -39,7 +39,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="36dp"
                 android:gravity="center"
-                android:text="沧州中铁装备材料制造有限公司空气质量监测系统"
+                android:text="中铁空气质量"
                 android:textColor="@color/white"
                 android:textSize="22sp" />
 

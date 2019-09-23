@@ -37,6 +37,7 @@ public class PortListAdatper extends XHBBaseAdapter<PortInfoData> {
             ((TextView)convertView.findViewById(R.id.layout_itemPortList_outputtype).findViewById(R.id.tv_left_question)).setText("监控点类型");
             ((TextView)convertView.findViewById(R.id.layout_itemPortList_outputpointtype).findViewById(R.id.tv_left_question)).setText("位置类型");
             ((TextView)convertView.findViewById(R.id.layout_itemPortList_ifsintering).findViewById(R.id.tv_left_question)).setText("是否烧结");
+            ((TextView)convertView.findViewById(R.id.layout_itemPortList_position).findViewById(R.id.tv_left_question)).setText("监测点位置");
 
             holder.outputcode = (TextView) convertView.findViewById(R.id.layout_itemPortList_outputcode).findViewById(R.id.tv_right_answer);
             holder.outputname = (TextView) convertView.findViewById(R.id.layout_itemPortList_outputname).findViewById(R.id.tv_right_answer);
@@ -44,6 +45,7 @@ public class PortListAdatper extends XHBBaseAdapter<PortInfoData> {
             holder.outputtype = (TextView) convertView.findViewById(R.id.layout_itemPortList_outputtype).findViewById(R.id.tv_right_answer);
             holder.outputpointtype = (TextView) convertView.findViewById(R.id.layout_itemPortList_outputpointtype).findViewById(R.id.tv_right_answer);
             holder.ifsintering = (TextView) convertView.findViewById(R.id.layout_itemPortList_ifsintering).findViewById(R.id.tv_right_answer);
+            holder.position = (TextView) convertView.findViewById(R.id.layout_itemPortList_position).findViewById(R.id.tv_right_answer);
             convertView.setTag(holder);
         }
         holder=(ViewHolder)convertView.getTag();
@@ -54,6 +56,7 @@ public class PortListAdatper extends XHBBaseAdapter<PortInfoData> {
         holder.outputtype.setText(portInfo.getOutputtype());
         holder.outputpointtype.setText(portInfo.getOutputpointtype());
         holder.ifsintering.setText(portInfo.getIfsintering());
+        holder.position.setText(portInfo.getAirposition());
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +80,7 @@ public class PortListAdatper extends XHBBaseAdapter<PortInfoData> {
         TextView outputtype;
         TextView outputpointtype;
         TextView ifsintering;
+        TextView position;
     }
 }
 

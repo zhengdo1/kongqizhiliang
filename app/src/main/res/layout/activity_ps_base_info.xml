@@ -71,7 +71,7 @@
 
                     <TextView
                         style="@style/leftQuestionStyle"
-                        android:text="关注度名称：" />
+                        android:text="关注度：" />
 
                     <EditText
                         android:id="@+id/et_login_3"
@@ -84,7 +84,7 @@
 
                     <TextView
                         style="@style/leftQuestionStyle"
-                        android:text="企业类型名称：" />
+                        android:text="企业类型：" />
 
                     <EditText
                         android:id="@+id/et_login_4"
@@ -110,7 +110,7 @@
 
                     <TextView
                         style="@style/leftQuestionStyle"
-                        android:text="区划编号：" />
+                        android:text="所属区划：" />
 
                     <EditText
                         android:id="@+id/et_login_6"
@@ -123,7 +123,7 @@
 
                     <TextView
                         style="@style/leftQuestionStyle"
-                        android:text="组织机构代码：" />
+                        android:text="社会信用统一代码：" />
 
                     <EditText
                         android:id="@+id/et_login_7"
@@ -136,7 +136,7 @@
 
                     <TextView
                         style="@style/leftQuestionStyle"
-                        android:text="法人代表：" />
+                        android:text="法定代表人：" />
 
                     <EditText
                         android:id="@+id/et_login_8"

@@ -96,19 +96,32 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
 //
 //            geocoderSearch.getFromLocationNameAsyn(query);
 
+            // 定义 Marker 点击事件监听
+            AMap.OnMarkerClickListener markerClickListener = new AMap.OnMarkerClickListener() {
+                // marker 对象被点击时回调的接口
+                // 返回 true 则表示接口已响应事件，否则返回false
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    currentMarker = marker;
+                    return false;
+                }
+            };
+            aMap.setOnMapClickListener(new AMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng) {
+                    if (currentMarker != null && currentMarker.isInfoWindowShown()) {
+                        currentMarker.hideInfoWindow();//这个是隐藏infowindow窗口的方法
+                    }
+                }
+            });
+
+            // 绑定 Marker 被点击事件
+            aMap.setOnMarkerClickListener(markerClickListener);
+
         }
     }
 
-//    public void getLocation() {
-//        MyLocationStyle myLocationStyle;
-//        myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-//        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE) ;//定位一次，且将视角移动到地图中心点。
-////        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);//连续定位、蓝点不会移动到地图中心点，定位点依照设备方向旋转，并且蓝点会跟随设备移动。。
-////        myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
-//        aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
-//        aMap.getUiSettings().setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示，非必需设置。
-//        aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
-//    }
+
 
     private void addMarkersToMap(List<com.gz.xhb.MVP.Model.Entity.Map> psBeanList) {
         MarkerOptions[] option = new MarkerOptions[psBeanList.size()];
@@ -131,42 +144,12 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
                 option[i].position(latLng);
                 option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker1));//正常
 
-//                switch (psBean.getState()) {
-//                    case "1":
-//                        option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker1));//正常
-//                        break;
-//                    case "2":
-//                        option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker2));//超标
-//                        break;
-//                    case "3":
-//                        option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker3));//异常
-//                        break;
-//                    case "4":
-//                        option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker4));//离线
-//                        break;
-////                    case "5":
-////                        option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker5));//超标+异常 没有超标+异常
-////                        break;
-//                    default:
-//                        option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker1));//正常+
-//                }
             } catch (Exception e) {
                 continue;
             }
             markerOptionlst.add(option[i]);
 //            hashMap.put(psBeanList.get(i).getId(), psBeanList.get(i));
         }
-//        mList = aMap.addMarkers(markerOptionlst, true);
-//        LocationManager locationManager = (LocationManager) rootView.getContext().getSystemService(LOCATION_SERVICE);//获得位置服务
-//        String provider = judgeProvider(locationManager);
-//        if (provider != null) {//有位置提供器的情况
-//            //为了压制getLastKnownLocation方法的警告
-//            if (ActivityCompat.checkSelfPermission(rootView.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(rootView.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//                return;
-//            }
-//            Location location = locationManager.getLastKnownLocation(provider);
-//            LatLng target = new LatLng(location.getLatitude(), location.getLongitude());
-//            addFilterMarkers(markerOptionlst, target);
         //一个一个增加地图缩放比例不失效
         for (int i = 0; i < markerOptionlst.size(); i++) {
 

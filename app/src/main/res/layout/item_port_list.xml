@@ -46,10 +46,16 @@
 
                 <include
                     android:id="@+id/layout_itemPortList_outputpointtype"
+                    android:visibility="gone"
                     layout="@layout/layout_left_question_right_answer2" />
 
                 <include
                     android:id="@+id/layout_itemPortList_ifsintering"
+                    android:visibility="gone"
+                    layout="@layout/layout_left_question_right_answer2" />
+
+                <include
+                    android:id="@+id/layout_itemPortList_position"
                     layout="@layout/layout_left_question_right_answer2" />
             </LinearLayout>
 

@@ -21,7 +21,7 @@
         android:layout_marginTop="46dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="空气质量监测系统"
+        android:text="中铁空气质量"
         android:textColor="@color/white"
         android:textSize="32sp" />
 
