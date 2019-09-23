@@ -14,7 +14,7 @@ public class DataWaterInfo implements Serializable {
 
     /**
      * total : 2
-     * rows : [{"监控时间":"2018-06-27 01:00","COD平均浓度(mg/L)":"","氨氮平均浓度(mg/L)":"","污水排放量(t)":""},{"监控时间":"2018-06-27 00:00","COD平均浓度(mg/L)":"","氨氮平均浓度(mg/L)":"","污水排放量(t)":""}]
+     * rows : [{"监测时间":"2018-06-27 01:00","COD平均浓度(mg/L)":"","氨氮平均浓度(mg/L)":"","污水排放量(t)":""},{"监测时间":"2018-06-27 00:00","COD平均浓度(mg/L)":"","氨氮平均浓度(mg/L)":"","污水排放量(t)":""}]
      */
 
     private int total;
@@ -38,13 +38,13 @@ public class DataWaterInfo implements Serializable {
 
     public static class RowsBean {
         /**
-         * 监控时间 : 2018-06-27 01:00
+         * 监测时间 : 2018-06-27 01:00
          * COD平均浓度(mg/L) :
          * 氨氮平均浓度(mg/L) :
          * 污水排放量(t) :
          */
 
-        private String 监控时间;
+        private String 监测时间;
         @SerializedName("COD平均浓度(mg/L)")
         private String _$CODMgL51; // FIXME check this code
         @SerializedName("氨氮平均浓度(mg/L)")
@@ -52,12 +52,12 @@ public class DataWaterInfo implements Serializable {
         @SerializedName("污水排放量(t)")
         private String _$T267; // FIXME check this code
 
-        public String get监控时间() {
-            return 监控时间;
+        public String get监测时间() {
+            return 监测时间;
         }
 
-        public void set监控时间(String 监控时间) {
-            this.监控时间 = 监控时间;
+        public void set监测时间(String 监测时间) {
+            this.监测时间 = 监测时间;
         }
 
         public String get_$CODMgL51() {

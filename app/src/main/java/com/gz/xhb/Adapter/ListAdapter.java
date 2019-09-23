@@ -56,7 +56,7 @@ public class ListAdapter extends BaseAdapter {
         if (dataList != null && dataList.size() != 0) {
             Map<String, String> map = dataList.get(0);
             for (Map.Entry<String, String> entry : map.entrySet()) {
-                if (!entry.getKey().equals("监控时间")) {
+                if (!entry.getKey().equals("监测时间")) {
                     String title = formatStringTitle(entry.getKey());
 //                    String title = entry.getKey();
                     TextView textView = getTextView(title);
@@ -153,7 +153,7 @@ public class ListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        String time = dataList.get(position).get("监控时间");
+        String time = dataList.get(position).get("监测时间");
 //        if(time.equals("2018-07-19 00:00")){
 //            Log.i("XHB","");
 //        }

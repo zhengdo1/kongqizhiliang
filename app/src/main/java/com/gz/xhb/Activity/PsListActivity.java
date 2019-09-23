@@ -75,7 +75,7 @@ public class PsListActivity extends BaseListActivity<ListView, PsListAdapter> im
             case "VOC":
                 pstype = "3";
                 break;
-            case "AIR":
+            case "空气质量":
                 pstype = "5";
                 break;
         }

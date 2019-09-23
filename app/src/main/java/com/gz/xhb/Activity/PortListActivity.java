@@ -70,7 +70,7 @@ public class PortListActivity extends BaseListActivity<ListView, PortListAdatper
             case "VOC":
                 outputtype = "3";
                 break;
-            case "AIR":
+            case "空气质量":
                 outputtype = "5";
                 break;
                 default:

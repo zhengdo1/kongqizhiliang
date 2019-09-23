@@ -149,7 +149,7 @@ public class OnlineDataActivity extends XHBBaseActivity implements OnlineDataVie
             case "VOC":
                 outputtype = "vocApp";
                 break;
-            case "AIR":
+            case "空气质量":
                 outputtype = "airApp";
                 break;
             default:
@@ -236,11 +236,11 @@ public class OnlineDataActivity extends XHBBaseActivity implements OnlineDataVie
         List<String> dates = new ArrayList<>();
 
         for (Map.Entry<String, String> entry : list.get(0).entrySet()) {
-            if (!entry.getKey().equals("监控时间")) {
+            if (!entry.getKey().equals("监测时间")) {
                 titles.add(entry.getKey());
                 List<Entry> entries = new ArrayList<Entry>();
                 for (int i = 0; i < list.size(); i++) {
-                    String dateKey = list.get(i).get("监控时间");
+                    String dateKey = list.get(i).get("监测时间");
 
                     String valueStr = list.get(i).get(entry.getKey());
                     float value = 0.0f;
