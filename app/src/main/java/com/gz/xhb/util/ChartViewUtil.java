@@ -79,7 +79,7 @@ public class ChartViewUtil {
         xAxis.setValueFormatter(xAxisFormatter);
         if (xAxisValue.size() > 10) {
 //            xAxis.setLabelCount(xAxisValue.size() / 2, false);
-            xAxis.setLabelCount(8, false);
+            xAxis.setLabelCount(5, false);
         }
 
         //y轴设置
