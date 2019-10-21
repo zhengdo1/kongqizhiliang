@@ -351,5 +351,16 @@
     //通过选择文件夹选择图片
     <color name="half_trans_bg">#55000000</color>
     <color name="red_light">#ff5f62</color>
+
+
+    <color name="color_map1">#00d900</color>
+    <color name="color_map2">#e3ff30</color>
+    <color name="color_map3">#ffa45d</color>
+    <color name="color_map4">#ff1b00</color>
+    <color name="color_map5">#713c00</color>
+    <color name="color_map6">#43350f</color>
+
+
+
 </resources>
 

@@ -1,10 +1,9 @@
 package com.gz.xhb.Activity;
 
 
-import android.Manifest;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.text.Html;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMapOptions;
@@ -17,14 +16,12 @@ import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
-import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeResult;
 import com.gz.xhb.MVP.Presenter.MapPresenter;
 import com.gz.xhb.MVP.View.MapInfoView;
 import com.gz.xhb.R;
-import com.gz.xhb.util.CheckPermissionUtil;
 import com.gz.xhb.util.ToolBarUtil;
 
 import java.util.ArrayList;
@@ -36,7 +33,7 @@ import java.util.Map;
  * Created by xjj on 2018/6/5.
  */
 
-public class AMapActivity extends XHBBaseActivity implements MapInfoView ,GeocodeSearch.OnGeocodeSearchListener {
+public class AMapActivity extends XHBBaseActivity implements MapInfoView, GeocodeSearch.OnGeocodeSearchListener {
     MapView mapView;
     AMap aMap;
     private ArrayList<MarkerOptions> markerOptionlst = new ArrayList<MarkerOptions>();
@@ -47,6 +44,8 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
     private MapPresenter mapPresenter = new MapPresenter(this);
     private CameraUpdate cameraUpdate;
     GeocodeSearch geocoderSearch;
+    Map<String, com.gz.xhb.MVP.Model.Entity.Map> dataMap = new HashMap<>();
+
     @Override
     protected int getContentViewLayoutID() {
         return R.layout.activity_amap;
@@ -54,7 +53,7 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        ToolBarUtil.setToolBar(this,"电子地图");
+        ToolBarUtil.setToolBar(this, "电子地图");
         mapView = (MapView) findViewById(R.id.mapView_amapHome);
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
         mapView.onCreate(savedInstanceState);
@@ -85,8 +84,8 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
 //            aMap.setMyLocationEnabled(true);// 可触发定位并显示当前位置
             //可视化区域，将指定位置指定到屏幕中心位置
             cameraUpdate = CameraUpdateFactory
-                    .newCameraPosition(new CameraPosition(new LatLng(38.3169,117.867
-                           ), 11, 0, 0));
+                    .newCameraPosition(new CameraPosition(new LatLng(38.295000, 117.818333
+                    ), 13, 0, 0));
             aMap.moveCamera(cameraUpdate);
 
 //            geocoderSearch = new GeocodeSearch(this);
@@ -102,8 +101,11 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
                 // 返回 true 则表示接口已响应事件，否则返回false
                 @Override
                 public boolean onMarkerClick(Marker marker) {
+                    Intent intent = new Intent(AMapActivity.this, StationDataDetailActivity.class);
+                    intent.putExtra("data", (com.gz.xhb.MVP.Model.Entity.Map) dataMap.get(marker.getTitle()));
+                    startActivity(intent);
                     currentMarker = marker;
-                    return false;
+                    return true;
                 }
             };
             aMap.setOnMapClickListener(new AMap.OnMapClickListener() {
@@ -122,13 +124,14 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
     }
 
 
-
     private void addMarkersToMap(List<com.gz.xhb.MVP.Model.Entity.Map> psBeanList) {
         MarkerOptions[] option = new MarkerOptions[psBeanList.size()];
         for (int i = 0; i < psBeanList.size(); i++) {
             LatLng latLng;
             try {
                 com.gz.xhb.MVP.Model.Entity.Map psBean = psBeanList.get(i);
+                dataMap.put(psBean.getId(), psBean);
+
                 Double latitude = Double.valueOf(psBean.getLatitude());
                 Double longitude = Double.valueOf(psBean.getLongitude());
 //                double[] lanlong = GPSUtil.bd09_To_Gcj02(latitude,longitude);
@@ -137,13 +140,53 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
 
                 option[i] = new MarkerOptions();
 //                option[i].title(psBeanList.get(i).get());
-//                option[i].title("企业"+i);
+                option[i].title(String.valueOf(psBean.getId()));
 //                option[i].snippet("内容" + i);
-                CharSequence charSequence= Html.fromHtml(psBean.getContent());
-                option[i].snippet(charSequence.toString());
-                option[i].position(latLng);
-                option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_marker1));//正常
+//                CharSequence charSequence= Html.fromHtml(psBean.getContent());
+//                option[i].snippet(charSequence.toString());
 
+                option[i].position(latLng);
+                if ("0".equals(psBean.getIsAirStation())) {
+                    switch (psBean.getLevelid()) {
+                        case "1":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.green1));//
+                            break;
+                        case "2":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.yellow1));//
+                            break;
+                        case "3":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.orange1));//
+                            break;
+                        case "4":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.red1));//
+                            break;
+                        case "5":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.darkred1));//
+                            break;
+                        case "6":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.black1));//
+                    }
+                } else if ("1".equals(psBean.getIsAirStation())) {
+                    switch (psBean.getLevelid()) {
+                        case "1":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.green2));//
+                            break;
+                        case "2":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.yellow2));//
+                            break;
+                        case "3":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.orange2));//
+                            break;
+                        case "4":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.red2));//
+                            break;
+                        case "5":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.darkred2));//
+                            break;
+                        case "6":
+                            option[i].icon(BitmapDescriptorFactory.fromResource(R.mipmap.black2));//
+                    }
+                }
             } catch (Exception e) {
                 continue;
             }
@@ -156,7 +199,7 @@ public class AMapActivity extends XHBBaseActivity implements MapInfoView ,Geocod
             aMap.addMarker(markerOptionlst.get(i));
 
         }
-        aMap.moveCamera(CameraUpdateFactory.zoomTo(11));
+        aMap.moveCamera(CameraUpdateFactory.zoomTo(13));
     }
 
     @Override
