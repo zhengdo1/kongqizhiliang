@@ -1,4 +1,4 @@
-package com.gz.xhb.util;
+package com.gz.xhb.util.chartUtil;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
@@ -30,7 +30,7 @@ public class StringAxisValueFormatterBarChart implements IAxisValueFormatter {
             return "";
         } else {
             String str = mStrs.get((int) v);
-            str = str.replace("\\n", "");
+            str = str.replace("\\n", " ");
             str = str.replace("\\r", "");
             return str;
         }

@@ -1,4 +1,4 @@
-package com.gz.xhb.util;
+package com.gz.xhb.util.chartUtil;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -16,6 +16,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.gz.xhb.R;
+import com.gz.xhb.util.Utils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.gz.xhb.util;
+package com.gz.xhb.util.chartUtil;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;

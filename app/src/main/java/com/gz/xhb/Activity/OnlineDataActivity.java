@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.data.Entry;
 import com.gz.xhb.Adapter.ListAdapter;
@@ -22,7 +21,7 @@ import com.gz.xhb.MVP.Model.Entity.DataWaterInfo;
 import com.gz.xhb.MVP.Presenter.OnlineDataPresenter;
 import com.gz.xhb.MVP.View.OnlineDataView;
 import com.gz.xhb.R;
-import com.gz.xhb.util.ChartViewUtil;
+import com.gz.xhb.util.chartUtil.ChartViewUtil;
 import com.gz.xhb.util.JsonUtil;
 import com.gz.xhb.util.TimeUtil;
 import com.gz.xhb.util.ToolBarUtil;
@@ -34,7 +33,6 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;

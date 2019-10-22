@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -19,9 +21,10 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.gz.xhb.MVP.Model.Entity.MapStationDataDetail;
 import com.gz.xhb.R;
-import com.gz.xhb.util.StringAxisValueFormatter;
-import com.gz.xhb.util.StringAxisValueFormatterBarChart;
-import com.gz.xhb.util.XYNewMarkerView;
+import com.gz.xhb.util.Utils;
+import com.gz.xhb.util.chartUtil.CustomXAxisRenderer;
+import com.gz.xhb.util.chartUtil.StringAxisValueFormatterBarChart;
+import com.gz.xhb.util.chartUtil.XYNewMarkerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +66,7 @@ public class StationDataDetailFragment2 extends Fragment {
 
         showChartData(mapStationDataDetails);
         // 设置Y轴进入动画
-        chart.animateY(1500);
+        chart.animateY(500);
     }
 
     /**
@@ -71,22 +74,39 @@ public class StationDataDetailFragment2 extends Fragment {
      */
     protected void initChartStyle() {
         //关闭描述
-        chart.getDescription().setEnabled(false);
+        chart.getDescription().setEnabled(true);
+        Description description = new Description();
+         description .setText("PM10小时浓度均值(μg/m³)");
+        chart.setDescription(description);
+        chart.setBackgroundColor(Color.WHITE);
         //设置显示值时，最大的柱数量
         chart.setMaxVisibleValueCount(60);
-
         //设置不能同时在x轴和y轴上缩放
         chart.setPinchZoom(false);
-
         chart.setDrawBarShadow(false);
         //设置不画背景网格
         chart.setDrawGridBackground(false);
+        chart.setHighlightFullBarEnabled(false);
+        float left= Utils.dip2px(this.getContext(),28);
+        float right=Utils.dip2px(this.getContext(),8);
+        float bottom=Utils.dip2px(this.getContext(),20);
+//        chart.setViewPortOffsets(left, -15f, right, bottom);
+        chart.getAxisRight().setEnabled(false);
+        chart.getAxisLeft().setEnabled(true);
+        chart.setScaleXEnabled(false);
+        chart.setScaleYEnabled(false);
 
         //设置X轴样式
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
-        chart.getAxisLeft().setDrawGridLines(false);
+        YAxis leftAxis = chart.getAxisLeft();
+        leftAxis.setDrawGridLines(true);
+        leftAxis.setAxisMinimum(0f);
+        xAxis.setGranularity(1f);
+        leftAxis.setSpaceTop(15f);
+        chart.setNoDataText("没有数据");//没有数据时显示的文字
     }
 
     /**
@@ -204,9 +224,12 @@ public class StationDataDetailFragment2 extends Fragment {
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(xAxisFormatter);
-        if (times.size() > 10) {
-            xAxis.setLabelCount(7, false);
+        if (times.size() > 12) {
+            xAxis.setLabelCount(12, false);
         }
+        chart.setExtraBottomOffset(2 * 9f);
+        xAxis.setTextSize(9);
+        chart.setXAxisRenderer(new CustomXAxisRenderer(chart.getViewPortHandler(), chart.getXAxis(), chart.getTransformer(YAxis.AxisDependency.LEFT)));
 
         chart.invalidate();
     }
