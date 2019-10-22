@@ -3,8 +3,6 @@ package com.gz.xhb.MVP.Model.Entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * Created by xjj on 2018/6/22.
  */
@@ -18,8 +16,8 @@ public class MapStationDataDetail implements Parcelable {
      */
 
     private String monitortime;
-    private Object avgvalue;
-    private Object datacolor;
+    private String avgvalue;
+    private String datacolor;
 
     protected MapStationDataDetail(Parcel in) {
         monitortime = in.readString();
@@ -45,19 +43,19 @@ public class MapStationDataDetail implements Parcelable {
         this.monitortime = monitortime;
     }
 
-    public Object getAvgvalue() {
+    public String getAvgvalue() {
         return avgvalue;
     }
 
-    public void setAvgvalue(Object avgvalue) {
+    public void setAvgvalue(String avgvalue) {
         this.avgvalue = avgvalue;
     }
 
-    public Object getDatacolor() {
+    public String getDatacolor() {
         return datacolor;
     }
 
-    public void setDatacolor(Object datacolor) {
+    public void setDatacolor(String datacolor) {
         this.datacolor = datacolor;
     }
 

@@ -1,28 +1,52 @@
 package com.gz.xhb.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gz.xhb.MVP.Model.Entity.Map;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.gz.xhb.MVP.Model.Entity.MapStationDataDetail;
 import com.gz.xhb.R;
+import com.gz.xhb.util.StringAxisValueFormatter;
+import com.gz.xhb.util.StringAxisValueFormatterBarChart;
+import com.gz.xhb.util.XYNewMarkerView;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by zdj on 2019/10/21.
  */
-public class StationDataDetailFragment2 extends android.support.v4.app.Fragment {
+public class StationDataDetailFragment2 extends Fragment {
 
+
+    @BindView(R.id.chart1)
+    BarChart chart;
+    Unbinder unbinder;
+    List<MapStationDataDetail> mapStationDataDetails;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_station_data_detail2, container, false);
+        View view = inflater.inflate(R.layout.fragment_station_data_detail2, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
@@ -30,7 +54,166 @@ public class StationDataDetailFragment2 extends android.support.v4.app.Fragment 
         super.onViewCreated(view, savedInstanceState);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            List<MapStationDataDetail> mapStationDataDetails=  bundle.getParcelableArrayList("data");
+            mapStationDataDetails = bundle.getParcelableArrayList("data");
+        } else {
+            mapStationDataDetails = new ArrayList<>();
         }
+        initChartStyle();
+        initChartLabel();
+
+        showChartData(mapStationDataDetails);
+        // 设置Y轴进入动画
+        chart.animateY(1500);
+    }
+
+    /**
+     * 初始化图表的样式
+     */
+    protected void initChartStyle() {
+        //关闭描述
+        chart.getDescription().setEnabled(false);
+        //设置显示值时，最大的柱数量
+        chart.setMaxVisibleValueCount(60);
+
+        //设置不能同时在x轴和y轴上缩放
+        chart.setPinchZoom(false);
+
+        chart.setDrawBarShadow(false);
+        //设置不画背景网格
+        chart.setDrawGridBackground(false);
+
+        //设置X轴样式
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        chart.getAxisLeft().setDrawGridLines(false);
+    }
+
+    /**
+     * 初始化图表的 标题 样式
+     */
+    protected void initChartLabel() {
+        //不显示图标 标题
+        chart.getLegend().setEnabled(false);
+    }
+
+    /**
+     * 设置图表数据
+     *
+     * @param count 柱状图中柱的数量
+     * @param range
+     */
+    protected void setChartData(int count, float range) {
+        List<BarEntry> values = new ArrayList<>();
+        //设置数据源
+        for (int i = 0; i < count; i++) {
+            float multi = (range + 1);
+            float val = (float) (Math.random() * multi) + multi / 3;
+            values.add(new BarEntry(i, val));
+        }
+
+        BarDataSet set1;
+        if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
+            set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
+            set1.setValues(values);
+            chart.getData().notifyDataChanged();
+            chart.notifyDataSetChanged();
+        } else {
+            set1 = new BarDataSet(values, "Data Set");
+            set1.setColors(ColorTemplate.VORDIPLOM_COLORS);
+            set1.setDrawValues(false);
+
+            List<IBarDataSet> dataSets = new ArrayList<>();
+            dataSets.add(set1);
+
+            BarData data = new BarData(dataSets);
+            chart.setData(data);
+            chart.setFitBars(true);
+        }
+        chart.invalidate();
+    }
+
+    private void showChartData(List<MapStationDataDetail> list) {
+        List<BarEntry> entrieList = new ArrayList<>();
+        List<String> times = new ArrayList<>();
+        List<String> dates = new ArrayList<>();
+        List<String> colors = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            MapStationDataDetail entry = list.get(i);
+            String timeStr = entry.getMonitortime();
+            String valueStr = entry.getAvgvalue();
+
+            float value = 0.0f;
+            if (valueStr == null || valueStr.equals("") || valueStr.equals("-")) {
+                value = 0.0f;
+            } else {
+                try {
+                    value = Float.parseFloat(valueStr);
+                } catch (Exception e) {
+//                            value = 0.0f;
+                }
+            }
+            BarEntry barEntry = new BarEntry(i, value);
+//            entries.add(new Entry(i, value));
+            entrieList.add(barEntry);
+//            for (int i = 0; i < list.size(); i++) {
+//                String valueStr = list.get(i).get(entry.getKey());
+//                dates.add(valueStr);
+//            }
+            times.add(timeStr);
+            dates.add(valueStr);
+            colors.add(entry.getDatacolor());
+        }
+        int[] colorsInt = new int[colors.size()];
+        for (int j = 0; j < colors.size(); j++) {
+            String color = colors.get(j);
+            if(color!=null&&color.startsWith("#"))
+            colorsInt[j] = Color.parseColor(color);
+            else {
+                colorsInt[j] = Color.parseColor("#00d900");
+            }
+        }
+
+        BarDataSet set1;
+        if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
+            set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
+            set1.setValues(entrieList);
+            chart.getData().notifyDataChanged();
+            chart.notifyDataSetChanged();
+        } else {
+            set1 = new BarDataSet(entrieList, "Data Set");
+            set1.setColors(colorsInt);
+            set1.setDrawValues(false);
+
+            List<IBarDataSet> dataSets = new ArrayList<>();
+            dataSets.add(set1);
+
+            BarData data = new BarData(dataSets);
+            chart.setData(data);
+            chart.setFitBars(true);
+        }
+        XYNewMarkerView mv = new XYNewMarkerView(this.getContext());
+        mv.setChartView(chart);
+        chart.setMarker(mv);
+
+        //x坐标轴设置
+        IAxisValueFormatter xAxisFormatter = new StringAxisValueFormatterBarChart(times);
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(xAxisFormatter);
+        if (times.size() > 10) {
+            xAxis.setLabelCount(7, false);
+        }
+
+        chart.invalidate();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }
