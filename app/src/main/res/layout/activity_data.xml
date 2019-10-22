@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.gz.xhb.util.TitleBar
+        <com.gz.xhb_zhongtie.util.TitleBar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"></com.gz.xhb.util.TitleBar>
+            android:minHeight="?attr/actionBarSize"></com.gz.xhb_zhongtie.util.TitleBar>
 
         <!--<com.miguelcatalan.materialsearchview.MaterialSearchView-->
             <!--android:id="@+id/search_view"-->

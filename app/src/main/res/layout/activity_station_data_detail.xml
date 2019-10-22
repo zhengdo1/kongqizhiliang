@@ -4,13 +4,13 @@
     android:background="@color/backgroud_color"
     android:orientation="vertical">
 
-    <com.gz.xhb.util.TitleBar
+    <com.gz.xhb_zhongtie.util.TitleBar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        style="@style/AppTheme.ActionBar"></com.gz.xhb.util.TitleBar>
+        style="@style/AppTheme.ActionBar"></com.gz.xhb_zhongtie.util.TitleBar>
 
     <LinearLayout
         android:id="@+id/ll_stationDataDetail1"

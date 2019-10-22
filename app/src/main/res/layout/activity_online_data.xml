@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gz.xhb.Activity.OnlineDataActivity">
+    tools:context="com.gz.xhb_zhongtie.Activity.OnlineDataActivity">
 
     <FrameLayout
         android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.gz.xhb.util.TitleBar
+        <com.gz.xhb_zhongtie.util.TitleBar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            style="@style/AppTheme.ActionBar"></com.gz.xhb.util.TitleBar>
+            style="@style/AppTheme.ActionBar"></com.gz.xhb_zhongtie.util.TitleBar>
 
     </FrameLayout>
 
