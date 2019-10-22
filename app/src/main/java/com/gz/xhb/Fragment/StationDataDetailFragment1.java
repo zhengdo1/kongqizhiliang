@@ -23,8 +23,6 @@ import butterknife.Unbinder;
 public class StationDataDetailFragment1 extends Fragment {
 
 
-    @BindView(R.id.tv_test1)
-    TextView tvTest1;
     Unbinder unbinder;
 
     @Nullable
@@ -41,7 +39,7 @@ public class StationDataDetailFragment1 extends Fragment {
 //        EventBus.getDefault().register(this);
         Bundle bundle = getArguments();
         Map mapData = (Map) bundle.getSerializable("data");
-        tvTest1.setText(Html.fromHtml(mapData.getContent()));
+//        tvTest1.setText(Html.fromHtml(mapData.getContent()));
 
     }
 
