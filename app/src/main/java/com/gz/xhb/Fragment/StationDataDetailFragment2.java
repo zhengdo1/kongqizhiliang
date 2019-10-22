@@ -219,7 +219,7 @@ public class StationDataDetailFragment2 extends Fragment {
             chart.setData(data);
             chart.setFitBars(true);
         }
-        XYNewMarkerView mv = new XYNewMarkerView(this.getContext());
+        XYNewMarkerView mv = new XYNewMarkerView(this.getContext(),times);
         mv.setChartView(chart);
         chart.setMarker(mv);
 
