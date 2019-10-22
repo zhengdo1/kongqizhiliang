@@ -4,6 +4,7 @@ package com.gz.xhb.MVP.Model.API.service;
 import com.gz.xhb.MVP.Model.Entity.BaseArrayVO;
 import com.gz.xhb.MVP.Model.Entity.BaseVO;
 import com.gz.xhb.MVP.Model.Entity.Map;
+import com.gz.xhb.MVP.Model.Entity.MapStationDataDetail;
 import com.gz.xhb.MVP.Model.Entity.PortInfo;
 import com.gz.xhb.MVP.Model.Entity.PsBaseInfo;
 import com.gz.xhb.MVP.Model.Entity.PsListInfo;
@@ -68,4 +69,8 @@ public interface ServerInterface {
     Observable<ResponseBody> getAlarmData80(@Field("keyword") String keyword,@Field("outputtype") String outputtype,@Field("begintime") String begintime
             ,@Field("endtime") String endtime);
 
+
+
+    @GET("DataChart/ColumnRotatedSeries_ForApp")
+    Observable<BaseArrayVO<MapStationDataDetail>> getMapStationDataDetail(@Query("pscode")String pscode, @Query("outputcode")String outputcode, @Query("istoutput")String istoutput);
 }

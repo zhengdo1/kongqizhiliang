@@ -5,6 +5,7 @@ import com.amap.api.maps.model.Poi;
 import com.gz.xhb.MVP.Model.Entity.BaseArrayVO;
 import com.gz.xhb.MVP.Model.Entity.BaseVO;
 import com.gz.xhb.MVP.Model.Entity.Map;
+import com.gz.xhb.MVP.Model.Entity.MapStationDataDetail;
 import com.gz.xhb.MVP.Model.Entity.PortInfo;
 import com.gz.xhb.MVP.Model.Entity.PsBaseInfo;
 import com.gz.xhb.MVP.Model.Entity.PsListInfo;
@@ -54,5 +55,6 @@ public interface IXHBCacheProviders {
     @LifeCache(duration = 0,timeUnit = TimeUnit.MINUTES)
     Observable<ResponseBody> getAlarmData80(Observable<ResponseBody> observable, DynamicKey keyAndNumber, EvictDynamicKey evictDynamicKey);
 
-
+    @LifeCache(duration = 0,timeUnit = TimeUnit.MINUTES)
+    Observable<BaseArrayVO<MapStationDataDetail>> getMapStaionDataDetail(Observable<BaseArrayVO<MapStationDataDetail>> observable, DynamicKey keyAndNumber, EvictDynamicKey evictDynamicKey);
 }

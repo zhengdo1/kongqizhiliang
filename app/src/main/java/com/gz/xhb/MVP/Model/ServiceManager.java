@@ -6,8 +6,8 @@ import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.gz.xhb.MVP.Model.API.service.ServerInterface;
 import com.gz.xhb.MVP.Model.Entity.BaseArrayVO;
-import com.gz.xhb.MVP.Model.Entity.BaseVO;
 import com.gz.xhb.MVP.Model.Entity.Map;
+import com.gz.xhb.MVP.Model.Entity.MapStationDataDetail;
 import com.gz.xhb.MVP.Model.Entity.PortInfo;
 import com.gz.xhb.MVP.Model.Entity.PsBaseInfo;
 import com.gz.xhb.MVP.Model.Entity.PsListInfo;
@@ -20,7 +20,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Field;
 
 /**
  * Created by QingMei on 2017/6/23.
@@ -66,16 +65,16 @@ public class ServiceManager {
         return service.getMapPsList();
     }
 
-    public Observable<PsListInfo> getPsList(String keyword,String pstype) {
-        return service.getPsList(keyword,pstype);
+    public Observable<PsListInfo> getPsList(String keyword, String pstype) {
+        return service.getPsList(keyword, pstype);
     }
 
     public Observable<PsBaseInfo> getPsBaseInfo(String pscode) {
         return service.getPsBaseInfo(pscode);
     }
 
-    public Observable<PortInfo> getPsPortList(String pscode,String outputtype) {
-        return service.getPsPortList(pscode,outputtype);
+    public Observable<PortInfo> getPsPortList(String pscode, String outputtype) {
+        return service.getPsPortList(pscode, outputtype);
     }
 
     public Observable<ResponseBody> getOnlineData(String pscode, String outputcode, String datatype, String outputtype, String begintime, String endtime, String pollutantcode) {
@@ -83,13 +82,18 @@ public class ServiceManager {
     }
 
 
-    public Observable<ResponseBody> getAlarmDataList100(String keyword,  String outputtype, String begintime, String endtime) {
-        return service.getAlarmData100(keyword,  outputtype, begintime, endtime);
+    public Observable<ResponseBody> getAlarmDataList100(String keyword, String outputtype, String begintime, String endtime) {
+        return service.getAlarmData100(keyword, outputtype, begintime, endtime);
     }
 
-    public Observable<ResponseBody> getAlarmDataList80(String keyword,  String outputtype, String begintime, String endtime) {
-        return service.getAlarmData80(keyword,  outputtype, begintime, endtime);
+    public Observable<ResponseBody> getAlarmDataList80(String keyword, String outputtype, String begintime, String endtime) {
+        return service.getAlarmData80(keyword, outputtype, begintime, endtime);
     }
+
+    public Observable<BaseArrayVO<MapStationDataDetail>> getMapStationDataDetail(String pscode, String outputcode, String istoutput) {
+        return service.getMapStationDataDetail(pscode, outputcode, istoutput);
+    }
+
 //    public Observable<BaseArrayVO<NearPsList>> getNearPsList(RequestBody body){
 //        return service.getNearPsList(body);
 //    }
