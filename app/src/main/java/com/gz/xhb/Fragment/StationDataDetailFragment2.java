@@ -77,10 +77,13 @@ public class StationDataDetailFragment2 extends Fragment {
         //关闭描述
         chart.getDescription().setEnabled(true);
         Description description = new Description();
-        description.setPosition(Utils.dip2px(getActivity(), 13), Utils.dip2px(getActivity(), 15));
+        description.setPosition(Utils.dip2px(getActivity(), 10), Utils.dip2px(getActivity(), 10));
         description.setTextAlign(Paint.Align.LEFT);
-         description .setText("PM10小时浓度均值(μg/m³)");
+        description.setTextSize(10f);
+        description.setTextColor(getResources().getColor(R.color.black));
+        description.setText("PM10小时浓度均值(μg/m³)");
         chart.setDescription(description);
+
         chart.setBackgroundColor(Color.WHITE);
         //设置显示值时，最大的柱数量
         chart.setMaxVisibleValueCount(60);
@@ -90,9 +93,9 @@ public class StationDataDetailFragment2 extends Fragment {
         //设置不画背景网格
         chart.setDrawGridBackground(false);
         chart.setHighlightFullBarEnabled(false);
-        float left= Utils.dip2px(this.getContext(),28);
-        float right=Utils.dip2px(this.getContext(),8);
-        float bottom=Utils.dip2px(this.getContext(),20);
+        float left = Utils.dip2px(this.getContext(), 28);
+        float right = Utils.dip2px(this.getContext(), 8);
+        float bottom = Utils.dip2px(this.getContext(), 20);
 //        chart.setViewPortOffsets(left, -15f, right, bottom);
         chart.getAxisRight().setEnabled(false);
         chart.getAxisLeft().setEnabled(true);
@@ -191,8 +194,8 @@ public class StationDataDetailFragment2 extends Fragment {
         int[] colorsInt = new int[colors.size()];
         for (int j = 0; j < colors.size(); j++) {
             String color = colors.get(j);
-            if(color!=null&&color.startsWith("#"))
-            colorsInt[j] = Color.parseColor(color);
+            if (color != null && color.startsWith("#"))
+                colorsInt[j] = Color.parseColor(color);
             else {
                 colorsInt[j] = Color.parseColor("#00d900");
             }
