@@ -60,7 +60,7 @@ public class StationDataDetailActivity extends XHBBaseActivity implements Statio
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.ll_stationDataDetail1, fragment1);
+        fragmentTransaction.replace(R.id.ll_stationDataDetail1, fragment1);
         fragmentTransaction.commit();
 
         String psCode = mapData.getPscode();
@@ -81,7 +81,7 @@ public class StationDataDetailActivity extends XHBBaseActivity implements Statio
         fragment2.setArguments(bundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.ll_stationDataDetail2, fragment2);
+        fragmentTransaction.replace(R.id.ll_stationDataDetail2, fragment2);
         fragmentTransaction.commit();
     }
 

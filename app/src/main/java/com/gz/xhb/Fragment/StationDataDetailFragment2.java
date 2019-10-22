@@ -1,6 +1,7 @@
 package com.gz.xhb.Fragment;
 
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -76,6 +77,8 @@ public class StationDataDetailFragment2 extends Fragment {
         //关闭描述
         chart.getDescription().setEnabled(true);
         Description description = new Description();
+        description.setPosition(Utils.dip2px(getActivity(), 13), Utils.dip2px(getActivity(), 15));
+        description.setTextAlign(Paint.Align.LEFT);
          description .setText("PM10小时浓度均值(μg/m³)");
         chart.setDescription(description);
         chart.setBackgroundColor(Color.WHITE);

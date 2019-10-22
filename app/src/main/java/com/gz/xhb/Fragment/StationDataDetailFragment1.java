@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,25 @@ public class StationDataDetailFragment1 extends Fragment {
 
 
     Unbinder unbinder;
+    @BindView(R.id.tv_fragmentStationDataDetail_quality)
+    TextView tvFragmentStationDataDetailQuality;
+    @BindView(R.id.tv_fragmentStationDataDetail_name)
+    TextView tvFragmentStationDataDetailName;
+    @BindView(R.id.tv_fragmentStationDataDetail_time)
+    TextView tvFragmentStationDataDetailTime;
+
+    @BindView(R.id.tv_fragmentStationDataDetail_pm10)
+    TextView tvFragmentStationDataDetailPm10;
+    @BindView(R.id.tv_fragmentStationDataDetail_no2)
+    TextView tvFragmentStationDataDetailNo2;
+    @BindView(R.id.tv_fragmentStationDataDetail_co)
+    TextView tvFragmentStationDataDetailCo;
+    @BindView(R.id.tv_fragmentStationDataDetail_so2)
+    TextView tvFragmentStationDataDetailSo2;
+    @BindView(R.id.tv_fragmentStationDataDetail_o3)
+    TextView tvFragmentStationDataDetailO3;
+    @BindView(R.id.tv_fragmentStationDataDetail_pm25)
+    TextView tvFragmentStationDataDetailPm25;
 
     @Nullable
     @Override
