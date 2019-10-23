@@ -6,27 +6,45 @@
 
     <com.gz.xhb_zhongtie.util.TitleBar
         android:id="@+id/toolbar"
+        style="@style/AppTheme.ActionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        style="@style/AppTheme.ActionBar"></com.gz.xhb_zhongtie.util.TitleBar>
+        android:minHeight="?attr/actionBarSize"></com.gz.xhb_zhongtie.util.TitleBar>
 
-    <LinearLayout
-        android:id="@+id/ll_stationDataDetail1"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_marginTop="4dp"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <LinearLayout
-        android:id="@+id/ll_stationDataDetail2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_marginTop="4dp"
-        android:orientation="vertical"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/ll_stationDataDetail1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:orientation="vertical"></LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_stationDataDetail2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:orientation="vertical"></LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
 
 
 </LinearLayout>

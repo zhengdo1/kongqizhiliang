@@ -62,8 +62,8 @@ public class LoginActivity extends XHBBaseActivity implements LoginView , CheckP
                 userLoginPresenter.login();
             }
         });
-        CheckPermissionUtil.getExternalStoragePermissions(this,101);
-        CheckUpdateUtil.checkUpdateFromPgyer(this,false);
+//        CheckPermissionUtil.getExternalStoragePermissions(this,101);
+//        CheckUpdateUtil.checkUpdateFromPgyer(this,false);
     }
 
 
@@ -150,8 +150,8 @@ public class LoginActivity extends XHBBaseActivity implements LoginView , CheckP
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms, boolean isAllGranted) {
-        if(requestCode==101)
-        CheckUpdateUtil.checkUpdateFromPgyer(this,false);
+//        if(requestCode==101)
+//        CheckUpdateUtil.checkUpdateFromPgyer(this,false);
     }
 
     @Override

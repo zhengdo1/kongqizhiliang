@@ -79,7 +79,7 @@ public class StationDataDetailFragment2 extends Fragment {
         Description description = new Description();
         description.setPosition(Utils.dip2px(getActivity(), 10), Utils.dip2px(getActivity(), 10));
         description.setTextAlign(Paint.Align.LEFT);
-        description.setTextSize(10f);
+        description.setTextSize(12f);
         description.setTextColor(getResources().getColor(R.color.black));
         description.setText("PM10小时浓度均值(μg/m³)");
         chart.setDescription(description);
