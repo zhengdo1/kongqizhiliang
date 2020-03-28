@@ -16,7 +16,7 @@ import com.gz.xhb_zhongtie.MVP.Model.Entity.User;
 import com.gz.xhb_zhongtie.MVP.Presenter.UserLoginPresenter;
 import com.gz.xhb_zhongtie.MVP.View.LoginView;
 import com.gz.xhb_zhongtie.R;
-import com.gz.xhb_zhongtie.util.CheckUpdate.CheckUpdateUtil;
+//import com.gz.xhb_zhongtie.util.CheckUpdate.CheckUpdateUtil;
 import com.gz.xhb_zhongtie.util.SharedPreferencesUtils;
 import com.gz.xhb_zhongtie.util.chartUtil.CheckPermissionUtil;
 

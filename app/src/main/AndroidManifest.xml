@@ -30,10 +30,10 @@
 
         <!--android:value="9dcf7133554527d214bd22318573a069"></meta-data>-->
 
-        <meta-data
-            android:name="PGYER_APPID"
-            android:value="d9d1ab7931f56917ee5bbd71af1de27a" >
-        </meta-data>
+<!--        <meta-data-->
+<!--            android:name="PGYER_APPID"-->
+<!--            android:value="d9d1ab7931f56917ee5bbd71af1de27a" >-->
+<!--        </meta-data>-->
 
         <activity
             android:name=".Activity.LoginActivity"
