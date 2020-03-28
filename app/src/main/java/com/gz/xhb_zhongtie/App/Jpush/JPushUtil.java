@@ -28,10 +28,11 @@ public class JPushUtil {
         }
         if (!jpushTagsSetted) {
             Set<String> set = new HashSet<>();
-            set.add("loginUser");
-            set.add("user"+SharedPreferencesUtils.getParam(context,"name","").toString());
+            set.add("zhongtie");
+//            set.add("user"+SharedPreferencesUtils.getParam(context,"name","").toString());
 //            JPushInterface.setTags(context, 1, set);//设置标签。每次调用至少设置一个 tag，覆盖之前的设置，不是新增。
-            JPushInterface.addTags(context,1,set);
+            Set set1 = JPushInterface.filterValidTags(set);
+            JPushInterface.setTags(context,1,set1);
             SharedPreferencesUtils.setParam(context, Constants.SPKEY_JPUSHTAGSETSUCCESS, true);
         }
     }

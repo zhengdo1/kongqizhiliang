@@ -62,7 +62,6 @@ public class MainMenuActivity extends XHBBaseActivity implements MainMenuView {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-//        JPushUtil.setJPushTags(this);
 
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/hwkt.ttf");
         tvMainTitle.setTypeface(typeface);

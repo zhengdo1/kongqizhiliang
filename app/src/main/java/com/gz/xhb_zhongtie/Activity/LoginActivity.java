@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gz.xhb_zhongtie.App.Jpush.CheckNotificationSettingOpenUtil;
+import com.gz.xhb_zhongtie.App.Jpush.JPushUtil;
 import com.gz.xhb_zhongtie.MVP.Model.Entity.User;
 import com.gz.xhb_zhongtie.MVP.Presenter.UserLoginPresenter;
 import com.gz.xhb_zhongtie.MVP.View.LoginView;
@@ -64,6 +65,7 @@ public class LoginActivity extends XHBBaseActivity implements LoginView , CheckP
             }
         });
         CheckNotificationSettingOpenUtil.checkSetting(this,"为了接收推送消息，请为应用打开“通知”权限");
+        JPushUtil.setJPushTags(this);
 
 //        CheckPermissionUtil.getExternalStoragePermissions(this,101);
 //        CheckUpdateUtil.checkUpdateFromPgyer(this,false);
