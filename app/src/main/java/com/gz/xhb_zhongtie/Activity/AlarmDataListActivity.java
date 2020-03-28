@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gz.xhb_zhongtie.Adapter.CommonListAdatper;
@@ -18,13 +17,16 @@ import com.gz.xhb_zhongtie.MVP.Model.Entity.PortInfoData;
 import com.gz.xhb_zhongtie.MVP.Presenter.AlarmDataListPresenter;
 import com.gz.xhb_zhongtie.MVP.View.AlarmDataListView;
 import com.gz.xhb_zhongtie.R;
+import com.gz.xhb_zhongtie.util.DateUtils;
+import com.gz.xhb_zhongtie.util.TimePickerDialogUtil;
 import com.gz.xhb_zhongtie.util.TimeUtil;
 import com.gz.xhb_zhongtie.util.TitleBar;
+import com.jzxiang.pickerview.data.Type;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
-import org.angmarch.views.NiceSpinner;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -41,8 +43,17 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 
 public class AlarmDataListActivity extends BaseListActivity<ListView, CommonListAdatper> implements AlarmDataListView {
 
+    List<PortInfoData> list = new ArrayList<>();
+    AlarmDataListPresenter presenter = new AlarmDataListPresenter(this);
+    String keyword = "", outputtype = "1";
+    List<String> dataset = new LinkedList<>(Arrays.asList("水", "气", "VOCs"));
+    String[] dataTypes = new String[]{"1", "gasApp", "vocApp"};
+
+    String typeName = "";
     @BindView(R.id.toolbar)
     TitleBar toolbar;
+    @BindView(R.id.search_view)
+    MaterialSearchView searchView;
     @BindView(R.id.toolbar_container)
     FrameLayout toolbarContainer;
     @BindView(R.id.tv_onlineData_beginTime)
@@ -51,12 +62,8 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
     TextView tvOnlineDataEndTime;
     @BindView(R.id.ll_onlineData_time)
     LinearLayout llOnlineDataTime;
-    @BindView(R.id.nice_spinner)
-    NiceSpinner niceSpinner;
     @BindView(R.id.btn_onlineData_search)
     Button btnOnlineDataSearch;
-    @BindView(R.id.ll_onlineData_otherCondition)
-    RelativeLayout llOnlineDataOtherCondition;
     @BindView(R.id.ll_onlineData_condition)
     LinearLayout llOnlineDataCondition;
     @BindView(R.id.lv_baseList)
@@ -64,15 +71,6 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
     @BindView(R.id.rl_baseList_refresh)
     BGARefreshLayout rlBaseListRefresh;
 
-    List<PortInfoData> list = new ArrayList<>();
-    AlarmDataListPresenter presenter = new AlarmDataListPresenter(this);
-    String keyword = "", outputtype = "1";
-    List<String> dataset = new LinkedList<>(Arrays.asList("水", "气", "VOCs"));
-    String[] dataTypes = new String[]{"1", "gasApp", "vocApp"};
-
-    String typeName = "";
-    @BindView(R.id.search_view)
-    MaterialSearchView searchView;
 
     @Override
     protected void beforeInit() {
@@ -139,19 +137,19 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
 
     @Override
     protected void initData() {
-        niceSpinner.attachDataSource(dataset);
-        niceSpinner.setSelectedIndex(0);
-        niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                outputtype = dataTypes[i];
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+//        niceSpinner.attachDataSource(dataset);
+//        niceSpinner.setSelectedIndex(0);
+//        niceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                outputtype = dataTypes[i];
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
         btnOnlineDataSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,9 +157,10 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
                 getData();
             }
         });
-        tvOnlineDataBeginTime.setText(TimeUtil.getTodayDateStr(new Date()));
-        tvOnlineDataEndTime.setText(TimeUtil.getDateToString(new Date().getTime()));
-        TimeUtil.setBeginToEndTime(this, tvOnlineDataBeginTime, tvOnlineDataEndTime);
+        tvOnlineDataBeginTime.setText(DateUtils.getDateToString(new Date().getTime(),new SimpleDateFormat("yyyy-MM-dd")));
+        tvOnlineDataEndTime.setText(DateUtils.getDateToString(new Date().getTime(),new SimpleDateFormat("yyyy-MM-dd")));
+        TimePickerDialogUtil.newInstence().setBeginToEndTime(this, tvOnlineDataBeginTime, tvOnlineDataEndTime, Type.YEAR_MONTH_DAY);
+//        TimeUtil.setBeginToEndTime(this, tvOnlineDataBeginTime, tvOnlineDataEndTime);
         initSearchView();
 
         getData();

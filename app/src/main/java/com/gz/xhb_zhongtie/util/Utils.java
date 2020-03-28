@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -12,12 +14,15 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.SpannedString;
 import android.text.style.AbsoluteSizeSpan;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gz.xhb_zhongtie.R;
 
 import java.security.MessageDigest;
 
@@ -381,6 +386,27 @@ public class Utils {
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
-
+    public static @ColorInt
+    int getThemeColorPramary(Context context){
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
+    public static @ColorInt int getThemeColorPramaryLight(Context context){
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        String colorStr = Integer.toHexString(color);
+        String color22 = "#" + colorStr;
+        if(colorStr.startsWith("ff")){
+            color22 = "#" + colorStr.replaceFirst("ff","22");
+        }
+//        GradientDrawable aDrawable = new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT,
+//                new int[]{Color.parseColor(colorff), Color.parseColor(color00)});
+        return Color.parseColor(color22);
+    }
 
 }

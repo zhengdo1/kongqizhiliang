@@ -16,7 +16,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
-        <item name="actionMenuTextColor">@color/white</item>
+        <item name="actionMenuTextColor">@color/colorPrimary</item>
         <!--<item name="actionMenuTextAppearance">@style/MenuTextStyle</item>-->
         <!--
             Theme customizations available in newer API levels can go in
