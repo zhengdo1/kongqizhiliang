@@ -9,6 +9,12 @@ android {
         versionCode 3
         versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : "com.gz.xhb_zhongtie",
+                JPUSH_APPKEY : "267a86f563a18210cab892cf", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL : "二维码扫描下载", //暂时填写默认值即可.
+        ]
     }
     sourceSets {
         main {
