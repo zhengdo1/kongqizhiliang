@@ -1,6 +1,7 @@
 package com.gz.xhb_zhongtie.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -24,8 +25,7 @@ public class CommonListAdatper extends XHBBaseAdapter<JSONObject> {
     JSONObject jsonObject;
 
     public CommonListAdatper(Context context, List<JSONObject> list) {
-        super(context, list,null);
-        jsonObject = list.get(0);
+        super(context, list, null);
     }
 
     public void notifyDataChanged(List<JSONObject> list) {
@@ -35,10 +35,11 @@ public class CommonListAdatper extends XHBBaseAdapter<JSONObject> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder=null;
-        if(convertView==null){
-            convertView=inflater.inflate(R.layout.item_common_list, null);
-            holder=new ViewHolder();
+        ViewHolder holder = null;
+        jsonObject = list.get(position);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.item_common_list, null);
+            holder = new ViewHolder();
 
             holder.linearLayouts = new ArrayList<>();
             holder.leftQs = new ArrayList<>();
@@ -49,11 +50,11 @@ public class CommonListAdatper extends XHBBaseAdapter<JSONObject> {
 
             LinearLayout linearLayout = convertView.findViewById(R.id.ll_itemCommonList_content);
 
-            if(jsonObject!=null){
+            if (jsonObject != null) {
                 Iterator<String> it = jsonObject.keys();
-                while(it.hasNext()) {
+                while (it.hasNext()) {
                     String key = it.next();
-                    LinearLayout itemLinearLayout = (LinearLayout) inflater.inflate(R.layout.layout_left_question_right_answer,null);
+                    LinearLayout itemLinearLayout = (LinearLayout) inflater.inflate(R.layout.layout_left_question_right_answer, null);
                     holder.linearLayouts.add(itemLinearLayout);
                     holder.leftQs.add(itemLinearLayout.findViewById(R.id.tv_left_question));
                     holder.rightAs.add(itemLinearLayout.findViewById(R.id.tv_right_answer));
@@ -61,18 +62,22 @@ public class CommonListAdatper extends XHBBaseAdapter<JSONObject> {
                 }
             }
             convertView.setTag(holder);
-        }else {
-            holder = (ViewHolder) convertView.getTag();
         }
-        final JSONObject commonInfo=list.get(position);
-        if(jsonObject!=null) {
+        holder = (ViewHolder) convertView.getTag();
+
+        final JSONObject commonInfo = list.get(position);
+        Log.i("test111111",commonInfo.toString());
+        if (jsonObject != null) {
             Iterator<String> it = list.get(position).keys();
-            int i=0;
+            int i = 0;
             while (it.hasNext()) {
                 String key = it.next();
                 try {
                     holder.leftQs.get(i).setText(key);
+
                     holder.rightAs.get(i).setText(jsonObject.getString(key));
+                    Log.i("test22222",jsonObject.getString(key).toString());
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -82,7 +87,7 @@ public class CommonListAdatper extends XHBBaseAdapter<JSONObject> {
         return convertView;
     }
 
-    class ViewHolder{
+    class ViewHolder {
         List<LinearLayout> linearLayouts;
         List<TextView> leftQs;
         List<TextView> rightAs;

@@ -39,7 +39,7 @@ public class MyApplication extends Application {
             int importance = NotificationManager.IMPORTANCE_HIGH;
             createNotificationChannel(context, channelId, channelName, importance);
         }
-        JPushInterface.setDebugMode(true);
+        JPushInterface.setDebugMode(false);
         JPushInterface.init(this);
     }
 

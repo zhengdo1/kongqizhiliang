@@ -176,7 +176,7 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
         if (typeName.equals("报警数据")) {
             presenter.getAlarmDataList100(keyword, outputtype, tvOnlineDataBeginTime.getText().toString(), tvOnlineDataEndTime.getText().toString());
         } else if (typeName.equals("预警数据")) {
-//            presenter.getAlarmDataList80(keyword, outputtype, tvOnlineDataBeginTime.getText().toString(), tvOnlineDataEndTime.getText().toString());
+            presenter.getAlarmDataList80(keyword, outputtype, tvOnlineDataBeginTime.getText().toString(), tvOnlineDataEndTime.getText().toString());
         }
     }
 

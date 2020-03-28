@@ -20,13 +20,13 @@ public class JPushUtil {
      * 设置推送标签
      */
     public static void setJPushTags(Context context) {
-        boolean jpushTagsSetted = false;
-        try {
-            jpushTagsSetted = (boolean) SharedPreferencesUtils.getParam(context, Constants.SPKEY_JPUSHTAGSETSUCCESS, false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (!jpushTagsSetted) {
+//        boolean jpushTagsSetted = false;
+//        try {
+//            jpushTagsSetted = (boolean) SharedPreferencesUtils.getParam(context, Constants.SPKEY_JPUSHTAGSETSUCCESS, false);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        if (!jpushTagsSetted) {
             Set<String> set = new HashSet<>();
             set.add("zhongtie");
 //            set.add("user"+SharedPreferencesUtils.getParam(context,"name","").toString());
@@ -34,7 +34,7 @@ public class JPushUtil {
             Set set1 = JPushInterface.filterValidTags(set);
             JPushInterface.setTags(context,1,set1);
             SharedPreferencesUtils.setParam(context, Constants.SPKEY_JPUSHTAGSETSUCCESS, true);
-        }
+//        }
     }
 
     /**
