@@ -19,7 +19,6 @@ import com.gz.xhb_zhongtie.MVP.View.AlarmDataListView;
 import com.gz.xhb_zhongtie.R;
 import com.gz.xhb_zhongtie.util.DateUtils;
 import com.gz.xhb_zhongtie.util.TimePickerDialogUtil;
-import com.gz.xhb_zhongtie.util.TimeUtil;
 import com.gz.xhb_zhongtie.util.TitleBar;
 import com.jzxiang.pickerview.data.Type;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
@@ -45,14 +44,14 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
 
     List<PortInfoData> list = new ArrayList<>();
     AlarmDataListPresenter presenter = new AlarmDataListPresenter(this);
-    String keyword = "", outputtype = "1";
+    String keyword = "", outputtype = "5";
     List<String> dataset = new LinkedList<>(Arrays.asList("水", "气", "VOCs"));
     String[] dataTypes = new String[]{"1", "gasApp", "vocApp"};
 
     String typeName = "";
     @BindView(R.id.toolbar)
     TitleBar toolbar;
-    @BindView(R.id.search_view)
+//    @BindView(R.id.search_view)
     MaterialSearchView searchView;
     @BindView(R.id.toolbar_container)
     FrameLayout toolbarContainer;
@@ -161,7 +160,7 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
         tvOnlineDataEndTime.setText(DateUtils.getDateToString(new Date().getTime(),new SimpleDateFormat("yyyy-MM-dd")));
         TimePickerDialogUtil.newInstence().setBeginToEndTime(this, tvOnlineDataBeginTime, tvOnlineDataEndTime, Type.YEAR_MONTH_DAY);
 //        TimeUtil.setBeginToEndTime(this, tvOnlineDataBeginTime, tvOnlineDataEndTime);
-        initSearchView();
+//        initSearchView();
 
         getData();
 //        presenter.getTestData();
@@ -177,7 +176,7 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
         if (typeName.equals("报警数据")) {
             presenter.getAlarmDataList100(keyword, outputtype, tvOnlineDataBeginTime.getText().toString(), tvOnlineDataEndTime.getText().toString());
         } else if (typeName.equals("预警数据")) {
-            presenter.getAlarmDataList80(keyword, outputtype, tvOnlineDataBeginTime.getText().toString(), tvOnlineDataEndTime.getText().toString());
+//            presenter.getAlarmDataList80(keyword, outputtype, tvOnlineDataBeginTime.getText().toString(), tvOnlineDataEndTime.getText().toString());
         }
     }
 
@@ -231,11 +230,11 @@ public class AlarmDataListActivity extends BaseListActivity<ListView, CommonList
         ButterKnife.bind(this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_ps_list, menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        searchView.setMenuItem(item);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_ps_list, menu);
+//        MenuItem item = menu.findItem(R.id.action_search);
+//        searchView.setMenuItem(item);
+//        return true;
+//    }
 }

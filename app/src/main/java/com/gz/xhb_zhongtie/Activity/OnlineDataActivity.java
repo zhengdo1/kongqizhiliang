@@ -21,16 +21,19 @@ import com.gz.xhb_zhongtie.MVP.Model.Entity.DataWaterInfo;
 import com.gz.xhb_zhongtie.MVP.Presenter.OnlineDataPresenter;
 import com.gz.xhb_zhongtie.MVP.View.OnlineDataView;
 import com.gz.xhb_zhongtie.R;
-import com.gz.xhb_zhongtie.util.chartUtil.ChartViewUtil;
+import com.gz.xhb_zhongtie.util.DateUtils;
 import com.gz.xhb_zhongtie.util.JsonUtil;
-import com.gz.xhb_zhongtie.util.TimeUtil;
+import com.gz.xhb_zhongtie.util.TimePickerDialogUtil;
 import com.gz.xhb_zhongtie.util.ToolBarUtil;
+import com.gz.xhb_zhongtie.util.chartUtil.ChartViewUtil;
 import com.jzxiang.pickerview.TimePickerDialog;
+import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 
 import org.angmarch.views.NiceSpinner;
 import org.json.JSONArray;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -41,6 +44,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import vb.shlv.MyHScrollView;
+
+//import com.gz.xhb_zhongtie.util.TimeUtil;
 
 /**
  * Created by xjj on 2018/6/13.
@@ -106,9 +111,12 @@ public class OnlineDataActivity extends XHBBaseActivity implements OnlineDataVie
     protected void initView(Bundle savedInstanceState) {
         String title = getIntent().getStringExtra("outputname");
         ToolBarUtil.setToolBar(this, title != null ? title : "");
-        tvOnlineDataBeginTime.setText(TimeUtil.getTodayDateStr(new Date()));
-        tvOnlineDataEndTime.setText(TimeUtil.getDateToString(new Date().getTime()));
-        TimeUtil.setBeginToEndTime(this, tvOnlineDataBeginTime, tvOnlineDataEndTime);
+//        tvOnlineDataBeginTime.setText(TimeUtil.getTodayDateStr(new Date()));
+//        tvOnlineDataEndTime.setText(TimeUtil.getDateToString(new Date().getTime()));
+//        TimeUtil.setBeginToEndTime(this, tvOnlineDataBeginTime, tvOnlineDataEndTime);
+        tvOnlineDataBeginTime.setText(DateUtils.getDateToString(new Date().getTime(),new SimpleDateFormat("yyyy-MM-dd HH:mm")));
+        tvOnlineDataEndTime.setText(DateUtils.getDateToString(new Date().getTime(),new SimpleDateFormat("yyyy-MM-dd HH:mm")));
+        TimePickerDialogUtil.newInstence().setBeginToEndTime(this, tvOnlineDataBeginTime, tvOnlineDataEndTime, Type.ALL);
 
         niceSpinner.attachDataSource(dataset);
         niceSpinner.setSelectedIndex(0);
