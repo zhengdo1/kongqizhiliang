@@ -9,6 +9,7 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.gz.xhb_zhongtie.App.Jpush.JPushUtil;
 import com.gz.xhb_zhongtie.MVP.Presenter.MainMenuPresenter;
 import com.gz.xhb_zhongtie.MVP.View.MainMenuView;
 import com.gz.xhb_zhongtie.R;
@@ -61,6 +62,8 @@ public class MainMenuActivity extends XHBBaseActivity implements MainMenuView {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+//        JPushUtil.setJPushTags(this);
+
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/hwkt.ttf");
         tvMainTitle.setTypeface(typeface);
         int length = itemName.length;

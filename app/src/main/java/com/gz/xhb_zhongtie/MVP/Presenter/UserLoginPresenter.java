@@ -27,8 +27,6 @@ public class UserLoginPresenter {
     }
 
     public void login() {
-        loginView.setUser("admin");
-        loginView.setPassword("q1w2e3r4");
         if(loginView.rememberIsChecked()){
             biz.remember(loginView.getUser(),loginView.getPassword());
         }else {
